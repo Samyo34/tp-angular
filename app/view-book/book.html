@@ -1,0 +1,6 @@
+<div ng-show="!ready">Patientez svp !</div>
+<div ng-controller="bookCtrl" ng-show="ready">
+<h1 ng-bind="livre['ISBN-13']"></h1>
+<img ng-src="{{livre.img}}"/>
+<div ng-bind-html="livre.desc "></div><br>
+</div>
