@@ -1,5 +1,7 @@
 <div ng-controller="catalogCtrl">
 <input type='text' ng-model="dataFilter"/>
+<input type='number' ng-model="minPrice" placeholder="prix minimum"/>
+<input type='number' ng-model="maxPrice" placeholder="prix maximum"/>
 	<table border="1px">
  		<thead>
 			<th>Référence</th>
@@ -7,7 +9,7 @@
 			<th>Prix unitaire HT</th>
 		</thead>
 		<tbody>
-			<tr ng-repeat="produit in catalog | produit.title | filter:dataFilter">
+			<tr ng-repeat="produit in catalog | filter:{title:dataFilter} | interval:{type:'price',min:minPrice,max:maxPrice}">
 				<td><a href='#/book/{{produit._id.$oid}}'>{{produit['ISBN-13']}}</a></td>
 				<td ng-bind="produit.title"></td>
 				<td ng-bind="produit.price"></td>
