@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp',['ngRoute','ngSanitize','myApp.catalog','myApp.book'])
+angular.module('myApp',['ngRoute','ngSanitize','myApp.catalog','myApp.book','myApp.panier'])
 	.config(function($routeProvider){
 		
 		$routeProvider.when('/catalog',{
