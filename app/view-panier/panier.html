@@ -1,0 +1,36 @@
+<div ng-controller="panierCtrl">
+<h1>Panier</h1>
+<table border="1px">
+ 		<thead>
+			<th>Référence</th>
+			<th>Libellé</th>
+			<th>Quantité</th>
+			<th>Prix HT</th>
+			<th>Prix TTC</th>
+			<th>Suppression</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="produit in getPanier()">
+				<td ng-bind="produit.obj.title"></td>
+				<td ng-bind="produit.obj.price"></td>
+				<td>
+					<input type="number" ng-model="produit.qte"/>
+				</td>
+				<td ng-bind="getHTItem(produit)"></td>
+				<td ng-bind="getTTCItem(produit)"></td>
+				<td>
+					<button ng-click='supprime(produit)'>Supprimer</button>
+				</td>
+			</tr>
+		</tbody>
+		<tfooter>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td ng-bind='getTotalHT()'></td>
+				<td ng-bind='getTotalTTC()'></td>
+			</tr>
+		</tfooter>
+	</table>
+</div>

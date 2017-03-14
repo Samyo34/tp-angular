@@ -1,23 +1,27 @@
 'use strict';
 
 angular.module('myApp.catalog', ['myApp.panier'])
-	.controller('catalogCtrl',function($scope, $http, servicePanier) {
+	.controller('catalogCtrl',function($scope, serviceCatalog, servicePanier,rechercheService) {
 		$scope.catalog = undefined;
-		var url = 'https://api.mongolab.com/api/1/databases/books/collections/books/?apiKey=d3qvB8ldYFW2KSynHRediqLuBLP8JA8i'
-		$http.get(url).then(function(reponse) {
-			// console.log('OK',reponse.data);
-			$scope.catalog = reponse.data;
+		serviceCatalog.getList().then(function(response){
+			$scope.catalog = response;
 		});
 		
-		var ajoute = function(item){
-			servicePanier.addItem(item);
-		}
+		$scope.recherche = rechercheService;
+//		var url = 'https://api.mongolab.com/api/1/databases/books/collections/books/?apiKey=d3qvB8ldYFW2KSynHRediqLuBLP8JA8i'
+//		$http.get(url).then(function(reponse) {
+//			// console.log('OK',reponse.data);
+//			$scope.catalog = reponse.data;
+//		});
 		
-		var getPanier = function(){
-			return ServicePanier.getPanier();
-		}
-				
+		
+		
+		$scope.ajoute = function(item){
+			servicePanier.addItem(item,1);
+		}		
 	})
+	
+	
 
 	
 	
